@@ -2,18 +2,14 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
+#from procurement.models import Component, Supplier, Representative
+from procurement.models import Representative
 
 
 def move_representatives(apps, schema_editor):
-    Supplier = apps.get_model('yourappname', 'Supplier')
+    Supplier = apps.get_model('procurement', 'Supplier')
     for supplier in Supplier.objects.all():
-        representative =
-            Representative.objects.create(
-                representative_name = supplier.representative_name,
-                representative_email = supplier.representative_email,
-                supplier = supplier
-            )
-        representative.save() 
+        supplier.representatives.create(representative_name = supplier.representative_name, representative_email = supplier.representative_email)
 
 
 class Migration(migrations.Migration):
