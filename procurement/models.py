@@ -55,14 +55,26 @@ class DashboardModel(models.Model):
 class Supplier(DashboardModel):
     """
     Model which represents an individual or organisation which supplies components
+    and is authorised.
     """
     name = models.CharField(max_length=255)
-    representative_name = models.CharField(max_length=255, null=True, blank=True)
-    representative_email = models.EmailField(max_length=255, null=True, blank=True)
     is_authorized = models.BooleanField()
 
     def __str__(self):
         return '{}'.format(self.name)
+
+
+class Representative(DashboardModel):
+    """
+    Model which represents a representative of a Supplier
+    lowest ID is the default representative for a supplier.
+    """
+    representative_name = models.CharField(max_length=255, null=True, blank=True)
+    representative_email = models.EmailField(max_length=255, null=True, blank=True)
+    supplier = models.ForeignKey(Supplier, related_name='representatives', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return '{}'.format(self.representative_name)
 
 
 class Component(DashboardModel):
