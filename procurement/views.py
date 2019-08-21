@@ -1,7 +1,7 @@
 from django.views.generic import FormView, TemplateView
 
 from procurement.forms import ComponentSearchForm
-from procurement.models import Supplier, Component
+from procurement.models import Supplier, Representative, Component
 
 
 class ComponentSearchView(FormView):
@@ -20,6 +20,11 @@ class ComponentSearchView(FormView):
             suppliers_last_updated = ''
 
         try:
+            representatives_last_updated = Representative.objects.latest('updated').time_since_update
+        except Representative.DoesNotExist:
+            representatives_last_updated = ''
+
+        try:
             components_last_updated = Component.objects.latest('updated').time_since_update
         except Component.DoesNotExist:
             components_last_updated = ''
@@ -30,6 +35,8 @@ class ComponentSearchView(FormView):
             'supplier_results': self.supplier_results,
             'supplier_count': Supplier.objects.all().count(),
             'suppliers_last_updated': suppliers_last_updated,
+            'representative_count': Representative.objects.all().count(),
+            'representatives_last_updated': representatives_last_updated,
             'component_count': Component.objects.all().count(),
             'components_last_updated': components_last_updated,
         })
