@@ -17,15 +17,13 @@
                 </thead>
                 <tbody>
                 {% for supplier in supplier_results %}
-                    <!-- Ugly hack until I can find a better way -->
-                    <tr>
-                        <td>
-                            {{ supplier.name }}
-                        </td>
-                    </tr>
                     {% for representative in supplier.representatives.all %}
                         <tr>
-                            <td></td>
+                            {% if forloop.first %}
+                                <td rowspan={{ supplier.representatives.count }}>
+                                    {{ supplier.name }}
+                                </td>
+                            {% endif %}
                             <td>{{ representative.representative_name }}</td>
                             <td>{{ representative.representative_email }}</td>
                         </tr>

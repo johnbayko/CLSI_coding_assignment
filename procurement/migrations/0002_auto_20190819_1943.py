@@ -2,7 +2,6 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-#from procurement.models import Component, Supplier, Representative
 from procurement.models import Representative
 
 
