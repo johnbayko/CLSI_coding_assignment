@@ -1,0 +1,38 @@
+Scenario:
+
+A procurement system has been developed for the purchasing department. The
+intended use of the system is to allow staff in any department to easily search
+for a component and view a list of approved suppliers for that component.
+Purchasing staff, as administrators of the system, maintain the list of
+components, and suppliers.
+
+This system has been running for a while, and the purchasing staff have
+requested the following feature:
+
+"Currently the system allows us to store a representative name, and
+representative email for each supplier - however some suppliers have multiple
+representatives. We would like the system to handle multiple representatives
+and their contact information for a supplier. We would like to maintain the
+contact data as admin staff, and users should also have the ability to view
+this information."
+
+What to do:
+
+The source code for the application in its current state can be cloned using
+git at the following url:
+
+git@github.com:iainworkman/coding-assignment.git
+
+Using your best judgement for data structure, security, user interface, API
+completeness, and code maintainability, please implement the feature request
+described above.
+
+Note that if you fork the project, your github account information will be
+visible to others browsing that repository. To protect your privacy, you may
+want to download and start a new repository, or work with a zip and send us
+back your zipped files.
+
+If you need to adjust this exercise to best demonstrate your capabilities, or
+you need assistance getting the project started please let us know.
+
+Good luck.
